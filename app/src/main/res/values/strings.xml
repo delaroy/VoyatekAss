@@ -51,4 +51,5 @@
     <string name="email">Email</string>
     <string name="gender">Gender</string>
     <string name="phone">Phone number</string>
+    <string name="update">Update User</string>
 </resources>

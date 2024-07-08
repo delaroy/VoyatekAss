@@ -15,10 +15,9 @@ import com.mobile.voyatekcoding.databinding.FragmentCreateUserBinding
 import com.mobile.voyatekcoding.databinding.FragmentSecondBinding
 import com.mobile.voyatekcoding.ui.UserViewModel
 import com.mobile.voyatekcoding.util.CustomProgressDialog
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+@AndroidEntryPoint
 class CreateUpdateFragment : Fragment() {
 
     private var _binding: FragmentCreateUserBinding? = null
@@ -44,6 +43,7 @@ class CreateUpdateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (args.userDetail.id != null) {
+            binding.next.text = getString(R.string.update)
             binding.deleteImg.visibility = VISIBLE
             binding.firstName.setText(args.userDetail.firstName)
             binding.lastName.setText(args.userDetail.lastName)
@@ -51,6 +51,8 @@ class CreateUpdateFragment : Fragment() {
             binding.gender.setText(args.userDetail.gender)
             binding.email.setText(args.userDetail.email)
             binding.phone.setText(args.userDetail.phoneNumber)
+        } else {
+            binding.next.text = getString(R.string.create_user)
         }
 
         binding.next.setOnClickListener {
@@ -136,7 +138,9 @@ class CreateUpdateFragment : Fragment() {
             observeDelete()
         }
 
-
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun createUserObserver() {

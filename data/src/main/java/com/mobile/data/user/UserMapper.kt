@@ -11,6 +11,7 @@ class UserMapper @Inject constructor() : Mapper<UserResponse, UserResponseData> 
         UserResponse(
             firstName = firstName,
             lastName = lastName,
+            email = email,
             phoneNumber = phoneNumber,
             address = address,
             gender = gender,
@@ -22,6 +23,7 @@ class UserMapper @Inject constructor() : Mapper<UserResponse, UserResponseData> 
         UserResponseData(
             firstName = firstName,
             lastName = lastName,
+            email = email,
             phoneNumber = phoneNumber,
             address = address,
             gender = gender,

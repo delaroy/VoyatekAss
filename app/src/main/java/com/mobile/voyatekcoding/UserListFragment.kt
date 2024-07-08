@@ -9,6 +9,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.mobile.domain.model.UserResponseData
 import com.mobile.voyatekcoding.databinding.FragmentUserListBinding
 import com.mobile.voyatekcoding.ui.UserViewModel
@@ -46,6 +47,11 @@ class UserListFragment : Fragment(), UserDetailClick {
             adapter = userListAdapter
         }
 
+        binding.fab.setOnClickListener { view ->
+           findNavController().navigate(UserListFragmentDirections.actionFirstFragmentToSecondFragment(UserResponseData("", "", "", "", "", "")))
+        }
+
+        viewModel.fetchAllUsers()
         observeUsersFetch()
     }
 

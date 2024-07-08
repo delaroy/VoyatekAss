@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_border"
-                        android:inputType="phone"
+                        android:inputType="text"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_border"
-                        android:inputType="phone"
+                        android:inputType="textEmailAddress"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -191,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_border"
-                        android:inputType="phone"
+                        android:inputType="text"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -260,7 +260,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_border"
                         android:textColor="@color/black"
-                        android:inputType="textEmailAddress"
+                        android:inputType="text"
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
