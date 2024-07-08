@@ -207,7 +207,7 @@ class CreateUpdateFragment : Fragment() {
                     }
 
                     value.isLoading() -> {
-                        progressDialog.start(title = "updating user ...")
+                        progressDialog.start(title = "deleting user ...")
                     }
 
                     value.isError() -> {
@@ -228,6 +228,14 @@ class CreateUpdateFragment : Fragment() {
         binding.gender.setText("")
         binding.email.setText("")
         binding.phone.setText("")
+
+        binding.selectFirstNameInput.isErrorEnabled = false
+        binding.selectLastNameInput.isErrorEnabled = false
+        binding.selectPhoneInput.isErrorEnabled = false
+        binding.selectPhoneInput.isErrorEnabled = false
+        binding.selectEmailInput.isErrorEnabled = false
+        binding.selectAddressInput.isErrorEnabled = false
+        binding.selectGenderInput.isErrorEnabled = false
     }
 
     override fun onDestroyView() {

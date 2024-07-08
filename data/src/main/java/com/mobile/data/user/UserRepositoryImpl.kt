@@ -71,6 +71,6 @@ class UserRepositoryImpl @Inject constructor(
             if (data.isError())
                 return@withContext Resource.error(data.message)
 
-            return@withContext Resource.success(data.data?.let {it.success })
+            return@withContext Resource.success("successfully deleted")
         }
 }

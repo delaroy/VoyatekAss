@@ -5,5 +5,5 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class DeleteMessage(
-    @Json(name = "success") val success: String
+    @Json(name = "success") val success: Boolean
 )

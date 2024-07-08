@@ -34,6 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Mike Ademoye"
+                android:textStyle="bold"
                 android:text='@{String.format("%s %s", model.firstName, model.lastName)}'
                 app:layout_constraintStart_toEndOf="@id/profile_img"
                 app:layout_constraintTop_toTopOf="parent"
@@ -43,6 +44,7 @@
                 android:id="@+id/phone_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="@{model.phoneNumber}"
                 app:layout_constraintStart_toStartOf="@+id/fullname"
                 app:layout_constraintTop_toBottomOf="@id/fullname"
@@ -53,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{model.gender}"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/phone_number"
                 app:layout_constraintTop_toBottomOf="@id/phone_number"
                 tools:text="Male" />
@@ -62,6 +65,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:text="@{model.address}"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/gender"
                 app:layout_constraintTop_toBottomOf="@id/gender"
                 tools:text="+234786788787" />

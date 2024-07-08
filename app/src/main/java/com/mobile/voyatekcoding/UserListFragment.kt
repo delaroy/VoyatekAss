@@ -46,11 +46,16 @@ class UserListFragment : Fragment(), UserDetailClick {
 
         binding.usersRecyclerview.apply {
             adapter = userListAdapter
-            addItemDecoration(DividerItemDecoration(requireContext(), SCROLL_AXIS_HORIZONTAL))
         }
 
         binding.fab.setOnClickListener { view ->
-           findNavController().navigate(UserListFragmentDirections.actionFirstFragmentToSecondFragment(UserResponseData("", "", "", "", "", "")))
+           findNavController().navigate(UserListFragmentDirections.actionFirstFragmentToSecondFragment(
+               UserResponseData(
+                   "",
+                   "",
+                   "",
+                   "",
+                   "", "")))
         }
 
         viewModel.fetchAllUsers()
