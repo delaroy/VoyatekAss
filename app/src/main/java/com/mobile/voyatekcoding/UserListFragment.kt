@@ -4,14 +4,22 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mobile.voyatekcoding.databinding.FragmentFirstBinding
 import com.mobile.voyatekcoding.databinding.FragmentUserListBinding
+import com.mobile.voyatekcoding.ui.UserViewModel
+import com.mobile.voyatekcoding.util.CustomProgressDialog
 
 class UserListFragment : Fragment() {
 
     private var _binding: FragmentUserListBinding? = null
+    private val viewModel: UserViewModel by viewModels()
+    private val userListAdapter : UserListAdapter by lazy { UserListAdapter() }
+    private val progressDialog by lazy { CustomProgressDialog(requireActivity()) }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -30,8 +38,43 @@ class UserListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        binding.usersRecyclerview.apply {
+            adapter = userListAdapter
+        }
+
+        observeUsersFetch()
+    }
+
+    private fun observeUsersFetch() {
+        viewModel.fetchAllUsersRequest.observe(requireActivity()) { result ->
+            result?.getContentIfNotHandled()?.let { value ->
+                when {
+                    value.isSuccess() -> {
+                        value.data?.let { data ->
+                            when {
+                                data.isEmpty() -> {
+                                    binding.noUser.visibility= VISIBLE
+                                }
+                                else -> {
+                                    binding.noUser.visibility= GONE
+                                    //userListAdapter.s
+                                }
+                            }
+                        }
+                        progressDialog.stop()
+                    }
+
+                    value.isLoading() -> {
+                        progressDialog.start(title = "fetching ...")
+                    }
+
+                    value.isError() -> {
+                        progressDialog.stop()
+                    }
+
+                    else -> {}
+                }
+            }
         }
     }
 
