@@ -6,7 +6,6 @@ import com.mobile.data.api.EndPoint.GET_ALL_USERS
 import com.mobile.data.api.EndPoint.GET_USER
 import com.mobile.data.api.EndPoint.UPDATE_USER
 import com.mobile.data.model.DeleteMessage
-import com.mobile.data.model.User
 import com.mobile.data.model.UserResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -28,16 +27,16 @@ interface ApiService {
 
     @POST(CREATE_USER)
     suspend fun createUser(
-        @Body body: User
+        @Body body: UserResponse
     ): Response<UserResponse>
 
     @PUT(UPDATE_USER)
     suspend fun updateUser(
-        @Path("id") phone: String, @Body body: User
+        @Path("id") id: String, @Body body: UserResponse
     ): Response<UserResponse>
 
     @DELETE(DELETE_USER)
     suspend fun deleteUser(
-        @Path("id") phone: String
-    ): DeleteMessage
+        @Path("id") id: String
+    ): Response<DeleteMessage>
 }

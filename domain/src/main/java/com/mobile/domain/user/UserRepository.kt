@@ -9,10 +9,12 @@ interface UserRepository
 {
     suspend fun fetchAllUsers(): Resource<List<UserResponseData>>
 
+    suspend fun createUser(userResponseData: UserResponseData): Resource<UserResponseData>
+
     suspend fun getUser(id: String): Resource<UserResponseData>
 
     suspend fun updateUser(userResponseData: UserResponseData): Resource<UserResponseData>
 
-    suspend fun deleteUser(id: String): Resource<DeleteUser>
+    suspend fun deleteUser(id: String): Resource<String>
 
 }

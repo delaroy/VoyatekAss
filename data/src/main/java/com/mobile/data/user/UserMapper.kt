@@ -5,7 +5,7 @@ import com.mobile.data.util.Mapper
 import com.mobile.domain.model.UserResponseData
 import javax.inject.Inject
 
-class CustomerMapper @Inject constructor() : Mapper<UserResponse, UserResponseData> {
+class UserMapper @Inject constructor() : Mapper<UserResponse, UserResponseData> {
 
     override fun to(domain: UserResponseData): UserResponse = domain.run {
         UserResponse(
