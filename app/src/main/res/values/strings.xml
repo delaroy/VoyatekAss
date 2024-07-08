@@ -44,4 +44,8 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="users">Users\n</string>
+    <string name="create_user">Create User</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="address">Address</string>
 </resources>

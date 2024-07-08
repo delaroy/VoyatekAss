@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.mobile.voyatekcoding.databinding.FragmentSecondBinding
+import com.mobile.voyatekcoding.databinding.FragmentFirstBinding
+import com.mobile.voyatekcoding.databinding.FragmentUserListBinding
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
-class SecondFragment : Fragment() {
+class UserListFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentUserListBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,7 +22,7 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentUserListBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -32,8 +30,8 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        binding.buttonFirst.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }
 
