@@ -15,7 +15,9 @@ import com.mobile.voyatekcoding.ui.UserViewModel
 import com.mobile.voyatekcoding.ui.adapter.UserDetailClick
 import com.mobile.voyatekcoding.ui.adapter.UserListAdapter
 import com.mobile.voyatekcoding.util.CustomProgressDialog
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserListFragment : Fragment(), UserDetailClick {
 
     private var _binding: FragmentUserListBinding? = null
@@ -86,6 +88,6 @@ class UserListFragment : Fragment(), UserDetailClick {
     }
 
     override fun clickOnItem(data: UserResponseData) {
-       //findNavController().navigate(UserL)
+       findNavController().navigate(UserListFragmentDirections.actionFirstFragmentToSecondFragment(data))
     }
 }

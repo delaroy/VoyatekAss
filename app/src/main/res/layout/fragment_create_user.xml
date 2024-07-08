@@ -117,6 +117,110 @@
                         android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+
+                <TextView
+                    android:id="@+id/email_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="@dimen/dimens_8"
+                    android:textColor="?android:attr/textColorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/select_last_name_input"
+                    android:text="@string/email"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/select_email_input"
+                    style="@style/TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:errorEnabled="true"
+                    app:hintEnabled="false"
+                    app:errorIconDrawable="@drawable/baseline_error_outline_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/email_txt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:background="@drawable/rounded_border"
+                        android:inputType="phone"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/gender_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="@dimen/dimens_8"
+                    android:textColor="?android:attr/textColorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/select_email_input"
+                    android:text="@string/gender"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/select_gender_input"
+                    style="@style/TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:errorEnabled="true"
+                    app:hintEnabled="false"
+                    app:errorIconDrawable="@drawable/baseline_error_outline_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_txt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:background="@drawable/rounded_border"
+                        android:inputType="phone"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/phone_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="@dimen/dimens_8"
+                    android:textColor="?android:attr/textColorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/select_gender_input"
+                    android:text="@string/phone"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/select_phone_input"
+                    style="@style/TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:errorEnabled="true"
+                    app:hintEnabled="false"
+                    app:errorIconDrawable="@drawable/baseline_error_outline_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phone_txt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:background="@drawable/rounded_border"
+                        android:inputType="phone"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
                 <TextView
                     android:id="@+id/address_txt"
                     android:layout_width="match_parent"
@@ -124,7 +228,7 @@
                     android:textSize="12sp"
                     android:layout_marginTop="@dimen/dimens_4"
                     android:textColor="?android:attr/textColorPrimary"
-                    app:layout_constraintTop_toBottomOf="@+id/select_last_name_input"
+                    app:layout_constraintTop_toBottomOf="@+id/select_phone_input"
                     android:text="@string/address"/>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -141,7 +245,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/address_txt">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/email_input"
+                        android:id="@+id/address_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_border"

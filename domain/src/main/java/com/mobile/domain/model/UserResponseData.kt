@@ -7,6 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class UserResponseData(
     val firstName: String,
     val lastName: String,
+    val email: String,
     val phoneNumber: String,
     val gender: String,
     val address: String,
