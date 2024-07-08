@@ -1,9 +1,7 @@
 package com.mobile.domain.user
 
-import com.mobile.domain.model.DeleteUser
 import com.mobile.domain.model.UserResponseData
 import com.mobile.domain.utils.Resource
-import kotlinx.coroutines.flow.Flow
 
 interface UserRepository
 {

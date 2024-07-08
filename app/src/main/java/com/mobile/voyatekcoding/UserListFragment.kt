@@ -86,6 +86,6 @@ class UserListFragment : Fragment(), UserDetailClick {
     }
 
     override fun clickOnItem(data: UserResponseData) {
-        findNavController().navigate()
+       //findNavController().navigate(UserL)
     }
 }
