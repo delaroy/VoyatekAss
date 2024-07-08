@@ -10,63 +10,71 @@
             type="com.mobile.domain.model.UserResponseData" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp">
+        android:elevation="@dimen/dimens_8"
+        android:layout_margin="@dimen/dimens_8">
 
-        <ImageView
-            android:id="@+id/profile_img"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/outline_account_circle_24"/>
+            android:layout_margin="@dimen/dimens_12">
 
-        <TextView
-            android:id="@+id/fullname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Mike Ademoye"
-            android:text="@{model.firstName +  model.lastName}"
-            app:layout_constraintStart_toEndOf="@id/profile_img"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="8dp"/>
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/outline_account_circle_24"/>
 
-        <TextView
-            android:id="@+id/phone_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{model.phoneNumber}"
-            app:layout_constraintStart_toStartOf="@+id/fullname"
-            app:layout_constraintTop_toBottomOf="@id/fullname"
-            tools:text="+234786788787" />
+            <TextView
+                android:id="@+id/fullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Mike Ademoye"
+                android:text='@{String.format("%s %s", model.firstName, model.lastName)}'
+                app:layout_constraintStart_toEndOf="@id/profile_img"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"/>
 
-        <TextView
-            android:id="@+id/gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{model.gender}"
-            app:layout_constraintStart_toStartOf="@+id/phone_number"
-            app:layout_constraintTop_toBottomOf="@id/phone_number"
-            tools:text="Male" />
+            <TextView
+                android:id="@+id/phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.phoneNumber}"
+                app:layout_constraintStart_toStartOf="@+id/fullname"
+                app:layout_constraintTop_toBottomOf="@id/fullname"
+                tools:text="+234786788787" />
 
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="@{model.address}"
-            app:layout_constraintStart_toStartOf="@+id/gender"
-            app:layout_constraintTop_toBottomOf="@id/gender"
-            tools:text="+234786788787" />
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.gender}"
+                app:layout_constraintStart_toStartOf="@+id/phone_number"
+                app:layout_constraintTop_toBottomOf="@id/phone_number"
+                tools:text="Male" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/chevron_left"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@{model.address}"
+                app:layout_constraintStart_toStartOf="@+id/gender"
+                app:layout_constraintTop_toBottomOf="@id/gender"
+                tools:text="+234786788787" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/chevron_left"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 </layout>
