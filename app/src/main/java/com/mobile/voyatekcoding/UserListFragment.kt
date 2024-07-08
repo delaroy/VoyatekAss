@@ -9,16 +9,18 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.mobile.voyatekcoding.databinding.FragmentFirstBinding
+import com.mobile.domain.model.UserResponseData
 import com.mobile.voyatekcoding.databinding.FragmentUserListBinding
 import com.mobile.voyatekcoding.ui.UserViewModel
+import com.mobile.voyatekcoding.ui.adapter.UserDetailClick
+import com.mobile.voyatekcoding.ui.adapter.UserListAdapter
 import com.mobile.voyatekcoding.util.CustomProgressDialog
 
-class UserListFragment : Fragment() {
+class UserListFragment : Fragment(), UserDetailClick {
 
     private var _binding: FragmentUserListBinding? = null
     private val viewModel: UserViewModel by viewModels()
-    private val userListAdapter : UserListAdapter by lazy { UserListAdapter() }
+    private val userListAdapter : UserListAdapter by lazy { UserListAdapter(this@UserListFragment) }
     private val progressDialog by lazy { CustomProgressDialog(requireActivity()) }
 
     // This property is only valid between onCreateView and
@@ -57,7 +59,7 @@ class UserListFragment : Fragment() {
                                 }
                                 else -> {
                                     binding.noUser.visibility= GONE
-                                    //userListAdapter.s
+                                    userListAdapter.submitList(data)
                                 }
                             }
                         }
@@ -81,5 +83,9 @@ class UserListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun clickOnItem(data: UserResponseData) {
+        findNavController().navigate()
     }
 }

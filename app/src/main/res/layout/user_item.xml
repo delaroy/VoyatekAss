@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="model"
+            type="com.mobile.domain.model.UserResponseData" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Mike Ademoye"
+            android:text="@{model.firstName +  model.lastName}"
             app:layout_constraintStart_toEndOf="@id/profile_img"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="8dp"/>
@@ -30,6 +37,7 @@
             android:id="@+id/phone_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{model.phoneNumber}"
             app:layout_constraintStart_toStartOf="@+id/fullname"
             app:layout_constraintTop_toBottomOf="@id/fullname"
             tools:text="+234786788787" />
@@ -38,6 +46,7 @@
             android:id="@+id/gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{model.gender}"
             app:layout_constraintStart_toStartOf="@+id/phone_number"
             app:layout_constraintTop_toBottomOf="@id/phone_number"
             tools:text="Male" />
@@ -46,6 +55,7 @@
             android:id="@+id/address"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:text="@{model.address}"
             app:layout_constraintStart_toStartOf="@+id/gender"
             app:layout_constraintTop_toBottomOf="@id/gender"
             tools:text="+234786788787" />
