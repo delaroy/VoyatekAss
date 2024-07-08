@@ -6,5 +6,5 @@ data class UserResponseData(
     val phoneNumber: String,
     val gender: String,
     val address: String,
-    val id: String
+    val id: String? = null
 )

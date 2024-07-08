@@ -1,4 +1,4 @@
-package me.tap.data.common
+package com.mobile.data.util
 
 interface Mapper<Entity, Domain> {
 
