@@ -7,8 +7,8 @@ import javax.inject.Inject
 
 class DeleteUserUseCase @Inject constructor(
     private val userRepository: UserRepository
-) : SuspendUseCase<String, Resource<DeleteUser>>() {
+) : SuspendUseCase<String, Resource<String>>() {
 
-    override suspend fun invoke(param: String): Resource<DeleteUser> =
+    override suspend fun invoke(param: String): Resource<String> =
         userRepository.deleteUser(param)
 }
