@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -43,6 +44,7 @@ class CreateUpdateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (args.userDetail.id != null) {
+            binding.deleteImg.visibility = VISIBLE
             binding.firstName.setText(args.userDetail.firstName)
             binding.lastName.setText(args.userDetail.lastName)
             binding.addressInput.setText(args.userDetail.address)
@@ -64,54 +66,164 @@ class CreateUpdateFragment : Fragment() {
                     binding.selectFirstNameInput.isErrorEnabled = true
                     binding.selectFirstNameInput.error = "First name is required"
                 }
+
                 lastName.isEmpty() -> {
                     binding.selectLastNameInput.isErrorEnabled = true
                     binding.selectLastNameInput.error = "Last name is required"
                 }
+
                 phoneNumber.isEmpty() -> {
                     binding.selectPhoneInput.isErrorEnabled = true
                     binding.selectPhoneInput.error = "Phone number is required"
                 }
+
                 phoneNumber.length < 11 -> {
                     binding.selectPhoneInput.isErrorEnabled = true
                     binding.selectPhoneInput.error = "Phone number length should be 11 "
                 }
+
                 email.isEmpty() -> {
                     binding.selectEmailInput.isErrorEnabled = true
                     binding.selectEmailInput.error = "Email is required"
                 }
+
                 address.isEmpty() -> {
                     binding.selectAddressInput.isErrorEnabled = true
                     binding.selectAddressInput.error = "Address is required"
                 }
+
                 gender.isEmpty() -> {
                     binding.selectGenderInput.isErrorEnabled = true
                     binding.selectGenderInput.error = "Gender is required"
                 }
+
                 else -> {
                     if (args.userDetail.id != null) {
-                        viewModel.updateUser(UserResponseData(
-                            firstName = firstName,
-                            lastName = lastName,
-                            email = email,
-                            phoneNumber = phoneNumber,
-                            gender = gender,
-                            address = address,
-                            id = args.userDetail.id
-                        ))
+                        viewModel.updateUser(
+                            UserResponseData(
+                                firstName = firstName,
+                                lastName = lastName,
+                                email = email,
+                                phoneNumber = phoneNumber,
+                                gender = gender,
+                                address = address,
+                                id = args.userDetail.id
+                            )
+                        )
+
+                        updateUserObserver()
                     } else {
-                        viewModel.createUser(UserResponseData(
-                            firstName = firstName,
-                            lastName = lastName,
-                            email = email,
-                            phoneNumber = phoneNumber,
-                            gender = gender,
-                            address = address,
-                            id = args.userDetail.id
-                        ))
+                        viewModel.createUser(
+                            UserResponseData(
+                                firstName = firstName,
+                                lastName = lastName,
+                                email = email,
+                                phoneNumber = phoneNumber,
+                                gender = gender,
+                                address = address,
+                                id = args.userDetail.id
+                            )
+                        )
+
+                        createUserObserver()
                     }
                 }
+            }
         }
+
+        binding.deleteImg.setOnClickListener {
+            viewModel.deleteUser(id = args.userDetail.id ?: "")
+            observeDelete()
+        }
+
+
+    }
+
+    private fun createUserObserver() {
+        viewModel.createUserRequest.observe(requireActivity()) { result ->
+            result?.getContentIfNotHandled()?.let { value ->
+                when {
+                    value.isSuccess() -> {
+                        value.data?.let { data ->
+                           Toast.makeText(requireContext(), "User created successfully", Toast.LENGTH_SHORT).show()
+                            resetFields()
+                        }
+                        progressDialog.stop()
+                    }
+
+                    value.isLoading() -> {
+                        progressDialog.start(title = "creating user ...")
+                    }
+
+                    value.isError() -> {
+                        progressDialog.stop()
+                    }
+
+                    else -> {}
+                }
+            }
+        }
+    }
+
+    private fun updateUserObserver() {
+        viewModel.updateUserRequest.observe(requireActivity()) { result ->
+            result?.getContentIfNotHandled()?.let { value ->
+                when {
+                    value.isSuccess() -> {
+                        value.data?.let { data ->
+                            Toast.makeText(requireContext(), "User updated successfully", Toast.LENGTH_SHORT).show()
+                        }
+                        progressDialog.stop()
+                    }
+
+                    value.isLoading() -> {
+                        progressDialog.start(title = "updating user ...")
+                    }
+
+                    value.isError() -> {
+                        progressDialog.stop()
+                    }
+
+                    else -> {}
+                }
+            }
+        }
+    }
+
+    private fun observeDelete() {
+        viewModel.deleteUserRequest.observe(requireActivity()) { result ->
+            result?.getContentIfNotHandled()?.let { value ->
+                when {
+                    value.isSuccess() -> {
+                        value.data?.let { data ->
+                            Toast.makeText(requireContext(), data, Toast.LENGTH_SHORT).show()
+                            findNavController().navigateUp()
+                        }
+                        progressDialog.stop()
+                    }
+
+                    value.isLoading() -> {
+                        progressDialog.start(title = "updating user ...")
+                    }
+
+                    value.isError() -> {
+                        progressDialog.stop()
+                    }
+
+                    else -> {}
+                }
+            }
+        }
+    }
+
+
+    private fun resetFields() {
+        binding.firstName.setText("")
+        binding.lastName.setText("")
+        binding.addressInput.setText("")
+        binding.gender.setText("")
+        binding.email.setText("")
+        binding.phone.setText("")
     }
 
     override fun onDestroyView() {
