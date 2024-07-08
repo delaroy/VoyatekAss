@@ -1,17 +1,18 @@
 package com.mobile.domain.user
 
+import com.mobile.domain.model.DeleteUser
+import com.mobile.domain.model.UserResponseData
 import com.mobile.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface UserRepository
 {
-    suspend fun fetchAllUsers(): Resource<List<UserRes>>
+    suspend fun fetchAllUsers(): Resource<List<UserResponseData>>
 
-    suspend fun getUser(): Resource<String>
+    suspend fun getUser(id: String): Resource<UserResponseData>
 
-    suspend fun updateUser(): Resource<String>
+    suspend fun updateUser(userResponseData: UserResponseData): Resource<UserResponseData>
 
-    suspend fun deleteUser(): Resource<String>
+    suspend fun deleteUser(id: String): Resource<DeleteUser>
 
-    fun fetchAllConvertedCurrencies(): Flow<List<CurrenciesConvertedData>>
 }
