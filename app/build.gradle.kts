@@ -75,12 +75,6 @@ dependencies {
     //hilt
     implementation("com.google.dagger:hilt-android:2.50")
     ksp("com.google.dagger:hilt-compiler:2.50")
-    implementation("androidx.hilt:hilt-work:1.1.0")
-    kapt("androidx.hilt:hilt-compiler:1.1.0")
-
-    //work manager
-    implementation("androidx.work:work-runtime-ktx:2.9.0@aar")
-    implementation("androidx.work:work-multiprocess:2.9.0@aar")
 
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("org.mockito:mockito-inline:4.3.1")
